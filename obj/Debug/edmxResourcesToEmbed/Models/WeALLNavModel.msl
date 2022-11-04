@@ -1,0 +1,106 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="WeALLNModelStoreContainer" CdmEntityContainer="WeALLNEntities2">
+    <EntitySetMapping Name="AutoCar">
+      <EntityTypeMapping TypeName="WeALLNModel.AutoCar">
+        <MappingFragment StoreEntitySet="AutoCar">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="NoCar" ColumnName="NoCar" />
+          <ScalarProperty Name="Marque" ColumnName="Marque" />
+          <ScalarProperty Name="Model" ColumnName="Model" />
+          <ScalarProperty Name="No_Societe" ColumnName="No_Societe" />
+          <ScalarProperty Name="Capacity" ColumnName="Capacity" />
+          <ScalarProperty Name="Cilma" ColumnName="Cilma" />
+          <ScalarProperty Name="Available" ColumnName="Available" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Client">
+      <EntityTypeMapping TypeName="WeALLNModel.Client">
+        <MappingFragment StoreEntitySet="Client">
+          <ScalarProperty Name="No_Client" ColumnName="No_Client" />
+          <ScalarProperty Name="First_Name" ColumnName="First_Name" />
+          <ScalarProperty Name="Last_Name" ColumnName="Last Name" />
+          <ScalarProperty Name="Username" ColumnName="Username" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="Telephone_Number" ColumnName="Telephone_Number" />
+          <ScalarProperty Name="E_mail" ColumnName="E_mail" />
+          <ScalarProperty Name="City_Country" ColumnName="City/Country" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Demande_Navette_Clt">
+      <EntityTypeMapping TypeName="WeALLNModel.Demande_Navette_Clt">
+        <MappingFragment StoreEntitySet="Demande_Navette_Clt">
+          <ScalarProperty Name="Id_demande" ColumnName="Id_demande" />
+          <ScalarProperty Name="No_Client" ColumnName="No_Client" />
+          <ScalarProperty Name="Num_Car" ColumnName="Num_Car" />
+          <ScalarProperty Name="Ville_Depart" ColumnName="Ville_Depart" />
+          <ScalarProperty Name="Ville_Arrivee" ColumnName="Ville_Arrivee" />
+          <ScalarProperty Name="Date_Depart" ColumnName="Date_Depart" />
+          <ScalarProperty Name="Date_Arrivee" ColumnName="Date_Arrivee" />
+          <ScalarProperty Name="Heur_debut" ColumnName="Heur_debut" />
+          <ScalarProperty Name="Heur_fin" ColumnName="Heur_fin" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Line_Demande">
+      <EntityTypeMapping TypeName="WeALLNModel.Line_Demande">
+        <MappingFragment StoreEntitySet="Line_Demande">
+          <ScalarProperty Name="Id_line_Cmd" ColumnName="Id_line_Cmd" />
+          <ScalarProperty Name="Id_demand_Navette" ColumnName="Id_demand_Navette" />
+          <ScalarProperty Name="Nbr_Demande" ColumnName="Nbr_Demande" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Line_Offre">
+      <EntityTypeMapping TypeName="WeALLNModel.Line_Offre">
+        <MappingFragment StoreEntitySet="Line_Offre">
+          <ScalarProperty Name="Id_Offre" ColumnName="Id_Offre" />
+          <ScalarProperty Name="Id_Navette" ColumnName="Id_Navette" />
+          <ScalarProperty Name="Id_Ste" ColumnName="Id_Ste" />
+          <ScalarProperty Name="Date_Debut_Offre" ColumnName="Date_Debut_Offre" />
+          <ScalarProperty Name="Date_fin_Offre" ColumnName="Date_fin_Offre" />
+          <ScalarProperty Name="Taux_Offre" ColumnName="Taux_Offre" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Login">
+      <EntityTypeMapping TypeName="WeALLNModel.Login">
+        <MappingFragment StoreEntitySet="Login">
+          <ScalarProperty Name="Id_User" ColumnName="Id_User" />
+          <ScalarProperty Name="Username" ColumnName="Username" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Navette">
+      <EntityTypeMapping TypeName="WeALLNModel.Navette">
+        <MappingFragment StoreEntitySet="Navette">
+          <ScalarProperty Name="Id_abonnement" ColumnName="Id_abonnement" />
+          <ScalarProperty Name="No_Autocar" ColumnName="No_Autocar" />
+          <ScalarProperty Name="No_Ste" ColumnName="No_Ste" />
+          <ScalarProperty Name="Date_debut" ColumnName="Date_debut" />
+          <ScalarProperty Name="Date_fin" ColumnName="Date_fin" />
+          <ScalarProperty Name="Heur_debut" ColumnName="Heur_debut" />
+          <ScalarProperty Name="Heur_fin" ColumnName="Heur_fin" />
+          <ScalarProperty Name="Ville_Depart" ColumnName="Ville_Depart" />
+          <ScalarProperty Name="Ville_Arriver" ColumnName="Ville_Arriver" />
+          <ScalarProperty Name="Nbr_Max_Abonnee" ColumnName="Nbr_Max_Abonnee" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Societe">
+      <EntityTypeMapping TypeName="WeALLNModel.Societe">
+        <MappingFragment StoreEntitySet="Societe">
+          <ScalarProperty Name="No_Ste" ColumnName="No_Ste" />
+          <ScalarProperty Name="Name_STE" ColumnName="Name_STE" />
+          <ScalarProperty Name="Username" ColumnName="Username" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="Telephone_Ste" ColumnName="Telephone_Ste" />
+          <ScalarProperty Name="E_mail_Ste" ColumnName="E_mail_Ste" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

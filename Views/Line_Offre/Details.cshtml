@@ -1,0 +1,58 @@
+﻿@model WeALLNav.Models.Line_Offre
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Line_Offre</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Date_Debut_Offre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Date_Debut_Offre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Date_fin_Offre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Date_fin_Offre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Taux_Offre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Taux_Offre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Navette.Ville_Depart)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Navette.Ville_Depart)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Societe.Name_STE)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Societe.Name_STE)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id_Offre }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

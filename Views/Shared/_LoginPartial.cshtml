@@ -1,0 +1,28 @@
+﻿
+@using Microsoft.AspNet.Identity
+@model WeALLNav.Models.Client
+
+
+@if (Request.IsAuthenticated)
+
+{
+    using (Html.BeginForm("LogOut", "Login", FormMethod.Post, new { id = "LogoutForm", @class = "navbar-right" }))
+    {
+        @Html.AntiForgeryToken()
+        <ul class="nav navbar-brand  navbar-right">
+            <li>
+                @Html.ActionLink("Hello " + Client.Identity.GetUserName() + "!", routeValues: null, htmlAttributes: new { title = Manage })
+            </li>
+            <li>
+                <a href="javascript:document.getElementById('LogoutForm').submit()">Log Out</a>
+            </li>
+        </ul>
+    }
+}
+else
+{
+    <ul class="navbar-nav ml-auto navbar-right">
+
+        <li class="nav-item active"> <a href="@Url.Action("Index","Login")" class="nav-link">Sign in</a></li>
+    </ul>
+}

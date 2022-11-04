@@ -1,0 +1,189 @@
+﻿@model IEnumerable<WeALLNav.Models.Demande_Navette_Clt>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutClient.cshtml";
+}
+
+<section class="hero-wrap hero-wrap-2 js-fullheight" style="background-image: url(../../images/bgb2.jpg);" data-stellar-background-ratio="0.5">
+    <div class="overlay"></div>
+    <div class="container">
+        <div class="row no-gutters slider-text js-fullheight align-items-end justify-content-start">
+            <div class="col-md-9    pb-5">
+                <p class="breadcrumbs"><span class="mr-2"><a href="index.html">Home ></a></span> <span>Create Navette ></span></p>
+                <h1 class="mb-3 bread">Create Navette</h1>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="ftco-section ftco-no-pt bg-light">
+    <div class="container">
+        <div class="row no-gutters">
+            <div class="col-md-12	featured-top">
+                <div class="row no-gutters">
+                    <div class="col-md-4 d-flex align-items-center">
+                        <form action="login.html" class="request-form    bg-dark">
+                            <h2>Begin your first shuttle here</h2>
+                            <div class="form-group">
+                                <label for="" class="label">No Client</label>
+                                <input type="text" class="form-control" placeholder="your id">
+                            </div>
+                            <div class="form-group">
+                                <label for="" class="label">Num AutoCar</label>
+                                <input type="text" class="form-control" placeholder="num of the car">
+                            </div>
+                            <div class="d-flex">
+                                <div class="form-group mr-2">
+                                    <label for="" class="label">Ville Depart</label>
+                                    <input type="text" class="form-control" placeholder="City, Airport, Station, etc">
+                                </div>
+                                <div class="form-group ml-2">
+                                    <label for="" class="label">Ville Arrivee</label>
+                                    <input type="text" class="form-control" placeholder="City, Airport, Station, etc">
+                                </div>
+                            </div>
+                            <div class="d-flex">
+                                <div class="form-group mr-2">
+                                    <label for="" class="label">Date Depart</label>
+                                    <input type="text" class="form-control" id="book_pick_date" placeholder="Date">
+                                </div>
+                                <div class="form-group ml-2">
+                                    <label for="" class="label">Date Arrivee</label>
+                                    <input type="text" class="form-control" id="book_off_date" placeholder="Date">
+                                </div>
+                            </div>
+                            <div class="d-flex">
+                                <div class="form-group mr-2">
+                                    <label for="" class="label">Heur Debut</label>
+                                    <input type="text" class="form-control" id="book_pick_Time" placeholder="Time">
+                                </div>
+                                <div class="form-group ml-2">
+                                    <label for="" class="label">Heur Fin</label>
+                                    <input type="text" class="form-control" id="book_off_Time" placeholder="Time">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <input type="submit" value="Reserve an AutoCar" class="btn btn-secondary py-3 px-4">
+                            </div>
+                        </form>
+                    </div>
+                    <div class="col-md-8 d-flex align-items-center">
+                        <div class="services-wrap rounded-right w-100">
+                            <h3 class="heading-section mb-4">Better Way to Shuttle Your Perfect Cars</h3>
+                            <div class="row d-flex mb-4">
+                                <div class="col-md-4 d-flex align-self-stretch   ">
+                                    <div class="services w-100 text-center">
+                                        <div class="icon d-flex align-items-center justify-content-center"><span class="col-md-2 p-md-3 img img-2 d-flex justify-content-center align-items-center" style="background-image: url(../../images/flaticon-route.png); "></span></div>
+                                        <div class="text w-100">
+                                            <h3 class="heading mb-2">Choose Your Pickup Location</h3>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 d-flex align-self-stretch   ">
+                                    <div class="services w-100 text-center">
+                                        <div class="icon d-flex align-items-center justify-content-center"><span class="col-md-2 p-md-3 img img-2 d-flex justify-content-center align-items-center" style="background-image: url(../../images/flaticon-route.png); "></span></div>
+                                        <div class="text w-100">
+                                            <h3 class="heading mb-2">Select the Best Compagny </h3>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 d-flex align-self-stretch   ">
+                                    <div class="services w-100 text-center">
+                                        <div class="icon d-flex align-items-center justify-content-center"><span class="col-md-2 p-md-3 img img-2 d-flex justify-content-center align-items-center" style="background-image: url(../../images/flaticon-route.png); "></span></div>
+                                        <div class="text w-100">
+                                            <h3 class="heading mb-2">Reserve Your Perfect AutoCar</h3>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <p><a href="car.html" class="btn btn-primary py-3 px-4">Review our AutoCar</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="ftco-section">
+    <div class="container">
+        <div class="row justify-content-center mb-5">
+            <div class="col-md-7 text-center heading-section  ">
+                <span class="subheading">Create Your Navette</span>
+                <h2 class="mb-3">Create Navette</h2>
+            </div>
+        </div>
+
+
+        <p>
+            @Html.ActionLink("Create New", "Create")
+        </p>
+        <table class="table">
+
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Num_Car)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Ville_Depart)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Ville_Arrivee)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Date_Depart)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Date_Arrivee)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Heur_debut)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Heur_fin)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Client.First_Name)
+                </th>
+                <th></th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Num_Car)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Ville_Depart)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Ville_Arrivee)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Date_Depart)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Date_Arrivee)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Heur_debut)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Heur_fin)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Client.First_Name)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { id = item.Id_demande }) |
+                        @Html.ActionLink("Details", "Details", new { id = item.Id_demande }) |
+                        @Html.ActionLink("Delete", "Delete", new { id = item.Id_demande })
+                    </td>
+                </tr>
+            }
+
+        </table>
+    </div>
+</section>

@@ -1,0 +1,202 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="WeALLNModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="AutoCar">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NoCar" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Marque" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Model" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="No_Societe" Type="int" Nullable="false" />
+    <Property Name="Capacity" Type="int" Nullable="false" />
+    <Property Name="Cilma" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Available" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Client">
+    <Key>
+      <PropertyRef Name="No_Client" />
+    </Key>
+    <Property Name="No_Client" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="First_Name" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Last Name" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Username" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Password" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Telephone_Number" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="E_mail" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="City/Country" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Demande_Navette_Clt">
+    <Key>
+      <PropertyRef Name="Id_demande" />
+    </Key>
+    <Property Name="Id_demande" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="No_Client" Type="int" Nullable="false" />
+    <Property Name="Num_Car" Type="int" Nullable="false" />
+    <Property Name="Ville_Depart" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Ville_Arrivee" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Date_Depart" Type="date" Nullable="false" />
+    <Property Name="Date_Arrivee" Type="date" Nullable="false" />
+    <Property Name="Heur_debut" Type="time" Precision="7" Nullable="false" />
+    <Property Name="Heur_fin" Type="time" Precision="7" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Line_Demande">
+    <Key>
+      <PropertyRef Name="Id_line_Cmd" />
+    </Key>
+    <Property Name="Id_line_Cmd" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Id_demand_Navette" Type="int" Nullable="false" />
+    <Property Name="Nbr_Demande" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Line_Offre">
+    <Key>
+      <PropertyRef Name="Id_Offre" />
+    </Key>
+    <Property Name="Id_Offre" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Id_Navette" Type="int" Nullable="false" />
+    <Property Name="Id_Ste" Type="int" Nullable="false" />
+    <Property Name="Date_Debut_Offre" Type="date" Nullable="false" />
+    <Property Name="Date_fin_Offre" Type="date" Nullable="false" />
+    <Property Name="Taux_Offre" Type="float" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Login">
+    <Key>
+      <PropertyRef Name="Id_User" />
+    </Key>
+    <Property Name="Id_User" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Username" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Password" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Navette">
+    <Key>
+      <PropertyRef Name="Id_abonnement" />
+    </Key>
+    <Property Name="Id_abonnement" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="No_Autocar" Type="int" Nullable="false" />
+    <Property Name="No_Ste" Type="int" Nullable="false" />
+    <Property Name="Date_debut" Type="date" Nullable="false" />
+    <Property Name="Date_fin" Type="date" Nullable="false" />
+    <Property Name="Heur_debut" Type="time" Precision="7" Nullable="false" />
+    <Property Name="Heur_fin" Type="time" Precision="7" Nullable="false" />
+    <Property Name="Ville_Depart" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Ville_Arriver" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Nbr_Max_Abonnee" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Societe">
+    <Key>
+      <PropertyRef Name="No_Ste" />
+    </Key>
+    <Property Name="No_Ste" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name_STE" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Username" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Password" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Telephone_Ste" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="E_mail_Ste" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <Association Name="FK__AutoCar__No_Soci__74AE54BC">
+    <End Role="Societe" Type="Self.Societe" Multiplicity="1" />
+    <End Role="AutoCar" Type="Self.AutoCar" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Societe">
+        <PropertyRef Name="No_Ste" />
+      </Principal>
+      <Dependent Role="AutoCar">
+        <PropertyRef Name="No_Societe" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Demande_N__No_Cl__60A75C0F">
+    <End Role="Client" Type="Self.Client" Multiplicity="1" />
+    <End Role="Demande_Navette_Clt" Type="Self.Demande_Navette_Clt" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Client">
+        <PropertyRef Name="No_Client" />
+      </Principal>
+      <Dependent Role="Demande_Navette_Clt">
+        <PropertyRef Name="No_Client" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Line_Dema__Id_de__656C112C">
+    <End Role="Demande_Navette_Clt" Type="Self.Demande_Navette_Clt" Multiplicity="1" />
+    <End Role="Line_Demande" Type="Self.Line_Demande" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Demande_Navette_Clt">
+        <PropertyRef Name="Id_demande" />
+      </Principal>
+      <Dependent Role="Line_Demande">
+        <PropertyRef Name="Id_demand_Navette" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Line_Offr__Id_Na__66603565">
+    <End Role="Navette" Type="Self.Navette" Multiplicity="1" />
+    <End Role="Line_Offre" Type="Self.Line_Offre" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Navette">
+        <PropertyRef Name="Id_abonnement" />
+      </Principal>
+      <Dependent Role="Line_Offre">
+        <PropertyRef Name="Id_Navette" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Line_Offr__Id_St__6754599E">
+    <End Role="Societe" Type="Self.Societe" Multiplicity="1" />
+    <End Role="Line_Offre" Type="Self.Line_Offre" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Societe">
+        <PropertyRef Name="No_Ste" />
+      </Principal>
+      <Dependent Role="Line_Offre">
+        <PropertyRef Name="Id_Ste" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Navette__No_Ste__5DCAEF64">
+    <End Role="Societe" Type="Self.Societe" Multiplicity="1" />
+    <End Role="Navette" Type="Self.Navette" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Societe">
+        <PropertyRef Name="No_Ste" />
+      </Principal>
+      <Dependent Role="Navette">
+        <PropertyRef Name="No_Ste" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="WeALLNModelStoreContainer">
+    <EntitySet Name="AutoCar" EntityType="Self.AutoCar" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Client" EntityType="Self.Client" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Demande_Navette_Clt" EntityType="Self.Demande_Navette_Clt" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Line_Demande" EntityType="Self.Line_Demande" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Line_Offre" EntityType="Self.Line_Offre" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Login" EntityType="Self.Login" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Navette" EntityType="Self.Navette" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Societe" EntityType="Self.Societe" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__AutoCar__No_Soci__74AE54BC" Association="Self.FK__AutoCar__No_Soci__74AE54BC">
+      <End Role="Societe" EntitySet="Societe" />
+      <End Role="AutoCar" EntitySet="AutoCar" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Demande_N__No_Cl__60A75C0F" Association="Self.FK__Demande_N__No_Cl__60A75C0F">
+      <End Role="Client" EntitySet="Client" />
+      <End Role="Demande_Navette_Clt" EntitySet="Demande_Navette_Clt" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Line_Dema__Id_de__656C112C" Association="Self.FK__Line_Dema__Id_de__656C112C">
+      <End Role="Demande_Navette_Clt" EntitySet="Demande_Navette_Clt" />
+      <End Role="Line_Demande" EntitySet="Line_Demande" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Line_Offr__Id_Na__66603565" Association="Self.FK__Line_Offr__Id_Na__66603565">
+      <End Role="Navette" EntitySet="Navette" />
+      <End Role="Line_Offre" EntitySet="Line_Offre" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Line_Offr__Id_St__6754599E" Association="Self.FK__Line_Offr__Id_St__6754599E">
+      <End Role="Societe" EntitySet="Societe" />
+      <End Role="Line_Offre" EntitySet="Line_Offre" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Navette__No_Ste__5DCAEF64" Association="Self.FK__Navette__No_Ste__5DCAEF64">
+      <End Role="Societe" EntitySet="Societe" />
+      <End Role="Navette" EntitySet="Navette" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

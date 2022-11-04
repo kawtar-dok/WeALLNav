@@ -1,0 +1,64 @@
+﻿@model WeALLNav.Models.Societe
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Societe</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Name_STE)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name_STE)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Username)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Username)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Password)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Password)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Telephone_Ste)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Telephone_Ste)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.E_mail_Ste)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.E_mail_Ste)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

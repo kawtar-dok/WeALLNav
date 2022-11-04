@@ -1,0 +1,64 @@
+﻿@model WeALLNav.Models.Line_Offre
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Line_Offre</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Date_Debut_Offre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Date_Debut_Offre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Date_fin_Offre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Date_fin_Offre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Taux_Offre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Taux_Offre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Navette.Ville_Depart)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Navette.Ville_Depart)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Societe.Name_STE)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Societe.Name_STE)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

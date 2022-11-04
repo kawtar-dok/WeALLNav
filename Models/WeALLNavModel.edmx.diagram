@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="b4a2f77ce09b4494b6cb0f2329051952" Name="Diagram1">
+        <EntityTypeShape EntityType="WeALLNModel.AutoCar" Width="1.5" PointX="3" PointY="3" IsExpanded="true" />
+        <EntityTypeShape EntityType="WeALLNModel.Client" Width="1.5" PointX="5.75" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="WeALLNModel.Demande_Navette_Clt" Width="1.5" PointX="8" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="WeALLNModel.Line_Demande" Width="1.5" PointX="10.25" PointY="1.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="WeALLNModel.Line_Offre" Width="1.5" PointX="5.25" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="WeALLNModel.Login" Width="1.5" PointX="7.75" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="WeALLNModel.Navette" Width="1.5" PointX="3" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="WeALLNModel.Societe" Width="1.5" PointX="0.75" PointY="5" IsExpanded="true" />
+        <AssociationConnector Association="WeALLNModel.FK__AutoCar__No_Soci__74AE54BC" ManuallyRouted="false" />
+        <AssociationConnector Association="WeALLNModel.FK__Demande_N__No_Cl__60A75C0F" ManuallyRouted="false" />
+        <AssociationConnector Association="WeALLNModel.FK__Line_Dema__Id_de__656C112C" ManuallyRouted="false" />
+        <AssociationConnector Association="WeALLNModel.FK__Line_Offr__Id_Na__66603565" ManuallyRouted="false" />
+        <AssociationConnector Association="WeALLNModel.FK__Line_Offr__Id_St__6754599E" ManuallyRouted="false" />
+        <AssociationConnector Association="WeALLNModel.FK__Navette__No_Ste__5DCAEF64" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

@@ -1,0 +1,132 @@
+﻿@model IEnumerable<WeALLNav.Models.AutoCar>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<section class="hero-wrap hero-wrap-2 js-fullheight" style="background-image: url(../../images/bgb2.jpg);" data-stellar-background-ratio="0.5">
+    <div class="overlay"></div>
+    <div class="container">
+        <div class="row no-gutters slider-text js-fullheight align-items-end justify-content-start">
+            <div class="col-md-9    pb-5">
+                <p class="breadcrumbs"><span class="mr-2"><a href="index.html">Home ></a></span> <span>AutoCars ></span></p>
+                <h1 class="mb-3 bread">Choose Your Car</h1>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<section class="ftco-section bg-light">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="car-wrap rounded   ">
+                    <div class="img rounded d-flex align-items-end" style="background-image: url(../../images/car-1.jpg);">
+                    </div>
+                    <div class="text">
+                        <h2 class="mb-0"><a href="car-single.html">Mercedes Grand Sedan</a></h2>
+                        <div class="d-flex mb-3">
+                            <span class="cat">Cheverolet</span>
+                            <p class="price ml-auto">$500 <span>/day</span></p>
+                        </div>
+                        <p class="d-flex mb-0 d-block"><a href="#" class="btn btn-primary py-2 mr-1">Book now</a> <a href="car-single.html" class="btn btn-secondary py-2 ml-1">Details</a></p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="car-wrap rounded   ">
+                    <div class="img rounded d-flex align-items-end" style="background-image: url(../../images/car-2.jpg);">
+                    </div>
+                    <div class="text">
+                        <h2 class="mb-0"><a href="car-single.html">Range Rover</a></h2>
+                        <div class="d-flex mb-3">
+                            <span class="cat">Subaru</span>
+                            <p class="price ml-auto">$500 <span>/day</span></p>
+                        </div>
+                        <p class="d-flex mb-0 d-block"><a href="#" class="btn btn-primary py-2 mr-1">Book now</a> <a href="car-single.html" class="btn btn-secondary py-2 ml-1">Details</a></p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="car-wrap rounded   ">
+                    <div class="img rounded d-flex align-items-end" style="background-image: url(../../images/car-3.jpg);">
+                    </div>
+                    <div class="text">
+                        <h2 class="mb-0"><a href="car-single.html">Mercedes Grand Sedan</a></h2>
+                        <div class="d-flex mb-3">
+                            <span class="cat">Cheverolet</span>
+                            <p class="price ml-auto">$500 <span>/day</span></p>
+                        </div>
+                        <p class="d-flex mb-0 d-block"><a href="#" class="btn btn-primary py-2 mr-1">Book now</a> <a href="car-single.html" class="btn btn-secondary py-2 ml-1">Details</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<section>
+
+  
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.NoCar)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Marque)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Model)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Capacity)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Cilma)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Available)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Societe.Name_STE)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NoCar)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Marque)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Model)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Capacity)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Cilma)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Available)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Societe.Name_STE)
+                </td>
+                <td>
+                    @Html.ActionLink("Details", "Details", new { id = item.id })
+                </td>
+            </tr>
+        }
+
+    </table>
+</section>

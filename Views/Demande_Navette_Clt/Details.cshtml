@@ -1,0 +1,82 @@
+﻿@model WeALLNav.Models.Demande_Navette_Clt
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Demande_Navette_Clt</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Num_Car)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Num_Car)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Ville_Depart)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Ville_Depart)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Ville_Arrivee)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Ville_Arrivee)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Date_Depart)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Date_Depart)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Date_Arrivee)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Date_Arrivee)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Heur_debut)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Heur_debut)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Heur_fin)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Heur_fin)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Client.First_Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Client.First_Name)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id_demande }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

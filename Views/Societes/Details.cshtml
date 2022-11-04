@@ -1,0 +1,58 @@
+﻿@model WeALLNav.Models.Societe
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Societe</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Name_STE)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name_STE)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Username)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Username)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Password)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Password)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Telephone_Ste)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Telephone_Ste)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.E_mail_Ste)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.E_mail_Ste)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.No_Ste }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

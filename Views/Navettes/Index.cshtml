@@ -1,0 +1,94 @@
+﻿@model IEnumerable<WeALLNav.Models.Navette>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<section class="hero-wrap hero-wrap-2 js-fullheight" style="background-image: url(../../images/bgb2.jpg);" data-stellar-background-ratio="0.5">
+    <div class="overlay"></div>
+    <div class="container">
+        <div class="row no-gutters slider-text js-fullheight align-items-end justify-content-start">
+            <div class="col-md-9    pb-5">
+                <p class="breadcrumbs"><span class="mr-2"><a href="index.html">Home ></a></span> <span>Navette ></span></p>
+                <h1 class="mb-3 bread">Navette</h1>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section>
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.No_Autocar)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Date_debut)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Date_fin)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Heur_debut)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Heur_fin)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Ville_Depart)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Ville_Arriver)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Nbr_Max_Abonnee)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Societe.Name_STE)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.No_Autocar)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Date_debut)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Date_fin)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Heur_debut)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Heur_fin)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Ville_Depart)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Ville_Arriver)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Nbr_Max_Abonnee)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Societe.Name_STE)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.Id_abonnement }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.Id_abonnement }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.Id_abonnement })
+                </td>
+            </tr>
+        }
+
+    </table>
+</section>

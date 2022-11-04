@@ -1,0 +1,553 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="WeALLNModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="AutoCar">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NoCar" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Marque" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Model" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="No_Societe" Type="int" Nullable="false" />
+          <Property Name="Capacity" Type="int" Nullable="false" />
+          <Property Name="Cilma" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Available" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Client">
+          <Key>
+            <PropertyRef Name="No_Client" />
+          </Key>
+          <Property Name="No_Client" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="First_Name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Last Name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Username" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Password" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Telephone_Number" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="E_mail" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="City/Country" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Demande_Navette_Clt">
+          <Key>
+            <PropertyRef Name="Id_demande" />
+          </Key>
+          <Property Name="Id_demande" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="No_Client" Type="int" Nullable="false" />
+          <Property Name="Num_Car" Type="int" Nullable="false" />
+          <Property Name="Ville_Depart" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Ville_Arrivee" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Date_Depart" Type="date" Nullable="false" />
+          <Property Name="Date_Arrivee" Type="date" Nullable="false" />
+          <Property Name="Heur_debut" Type="time" Precision="7" Nullable="false" />
+          <Property Name="Heur_fin" Type="time" Precision="7" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Line_Demande">
+          <Key>
+            <PropertyRef Name="Id_line_Cmd" />
+          </Key>
+          <Property Name="Id_line_Cmd" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Id_demand_Navette" Type="int" Nullable="false" />
+          <Property Name="Nbr_Demande" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Line_Offre">
+          <Key>
+            <PropertyRef Name="Id_Offre" />
+          </Key>
+          <Property Name="Id_Offre" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Id_Navette" Type="int" Nullable="false" />
+          <Property Name="Id_Ste" Type="int" Nullable="false" />
+          <Property Name="Date_Debut_Offre" Type="date" Nullable="false" />
+          <Property Name="Date_fin_Offre" Type="date" Nullable="false" />
+          <Property Name="Taux_Offre" Type="float" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Login">
+          <Key>
+            <PropertyRef Name="Id_User" />
+          </Key>
+          <Property Name="Id_User" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Username" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Password" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Navette">
+          <Key>
+            <PropertyRef Name="Id_abonnement" />
+          </Key>
+          <Property Name="Id_abonnement" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="No_Autocar" Type="int" Nullable="false" />
+          <Property Name="No_Ste" Type="int" Nullable="false" />
+          <Property Name="Date_debut" Type="date" Nullable="false" />
+          <Property Name="Date_fin" Type="date" Nullable="false" />
+          <Property Name="Heur_debut" Type="time" Precision="7" Nullable="false" />
+          <Property Name="Heur_fin" Type="time" Precision="7" Nullable="false" />
+          <Property Name="Ville_Depart" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Ville_Arriver" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Nbr_Max_Abonnee" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Societe">
+          <Key>
+            <PropertyRef Name="No_Ste" />
+          </Key>
+          <Property Name="No_Ste" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name_STE" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Username" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Password" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Telephone_Ste" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="E_mail_Ste" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <Association Name="FK__AutoCar__No_Soci__74AE54BC">
+          <End Role="Societe" Type="Self.Societe" Multiplicity="1" />
+          <End Role="AutoCar" Type="Self.AutoCar" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Societe">
+              <PropertyRef Name="No_Ste" />
+            </Principal>
+            <Dependent Role="AutoCar">
+              <PropertyRef Name="No_Societe" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Demande_N__No_Cl__60A75C0F">
+          <End Role="Client" Type="Self.Client" Multiplicity="1" />
+          <End Role="Demande_Navette_Clt" Type="Self.Demande_Navette_Clt" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Client">
+              <PropertyRef Name="No_Client" />
+            </Principal>
+            <Dependent Role="Demande_Navette_Clt">
+              <PropertyRef Name="No_Client" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Line_Dema__Id_de__656C112C">
+          <End Role="Demande_Navette_Clt" Type="Self.Demande_Navette_Clt" Multiplicity="1" />
+          <End Role="Line_Demande" Type="Self.Line_Demande" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Demande_Navette_Clt">
+              <PropertyRef Name="Id_demande" />
+            </Principal>
+            <Dependent Role="Line_Demande">
+              <PropertyRef Name="Id_demand_Navette" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Line_Offr__Id_Na__66603565">
+          <End Role="Navette" Type="Self.Navette" Multiplicity="1" />
+          <End Role="Line_Offre" Type="Self.Line_Offre" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Navette">
+              <PropertyRef Name="Id_abonnement" />
+            </Principal>
+            <Dependent Role="Line_Offre">
+              <PropertyRef Name="Id_Navette" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Line_Offr__Id_St__6754599E">
+          <End Role="Societe" Type="Self.Societe" Multiplicity="1" />
+          <End Role="Line_Offre" Type="Self.Line_Offre" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Societe">
+              <PropertyRef Name="No_Ste" />
+            </Principal>
+            <Dependent Role="Line_Offre">
+              <PropertyRef Name="Id_Ste" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Navette__No_Ste__5DCAEF64">
+          <End Role="Societe" Type="Self.Societe" Multiplicity="1" />
+          <End Role="Navette" Type="Self.Navette" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Societe">
+              <PropertyRef Name="No_Ste" />
+            </Principal>
+            <Dependent Role="Navette">
+              <PropertyRef Name="No_Ste" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="WeALLNModelStoreContainer">
+          <EntitySet Name="AutoCar" EntityType="Self.AutoCar" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Client" EntityType="Self.Client" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Demande_Navette_Clt" EntityType="Self.Demande_Navette_Clt" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Line_Demande" EntityType="Self.Line_Demande" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Line_Offre" EntityType="Self.Line_Offre" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Login" EntityType="Self.Login" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Navette" EntityType="Self.Navette" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Societe" EntityType="Self.Societe" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__AutoCar__No_Soci__74AE54BC" Association="Self.FK__AutoCar__No_Soci__74AE54BC">
+            <End Role="Societe" EntitySet="Societe" />
+            <End Role="AutoCar" EntitySet="AutoCar" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Demande_N__No_Cl__60A75C0F" Association="Self.FK__Demande_N__No_Cl__60A75C0F">
+            <End Role="Client" EntitySet="Client" />
+            <End Role="Demande_Navette_Clt" EntitySet="Demande_Navette_Clt" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Line_Dema__Id_de__656C112C" Association="Self.FK__Line_Dema__Id_de__656C112C">
+            <End Role="Demande_Navette_Clt" EntitySet="Demande_Navette_Clt" />
+            <End Role="Line_Demande" EntitySet="Line_Demande" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Line_Offr__Id_Na__66603565" Association="Self.FK__Line_Offr__Id_Na__66603565">
+            <End Role="Navette" EntitySet="Navette" />
+            <End Role="Line_Offre" EntitySet="Line_Offre" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Line_Offr__Id_St__6754599E" Association="Self.FK__Line_Offr__Id_St__6754599E">
+            <End Role="Societe" EntitySet="Societe" />
+            <End Role="Line_Offre" EntitySet="Line_Offre" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Navette__No_Ste__5DCAEF64" Association="Self.FK__Navette__No_Ste__5DCAEF64">
+            <End Role="Societe" EntitySet="Societe" />
+            <End Role="Navette" EntitySet="Navette" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="WeALLNModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="AutoCar">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NoCar" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Marque" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Model" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="No_Societe" Type="Int32" Nullable="false" />
+          <Property Name="Capacity" Type="Int32" Nullable="false" />
+          <Property Name="Cilma" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Available" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Societe" Relationship="Self.FK__AutoCar__No_Soci__74AE54BC" FromRole="AutoCar" ToRole="Societe" />
+        </EntityType>
+        <EntityType Name="Client">
+          <Key>
+            <PropertyRef Name="No_Client" />
+          </Key>
+          <Property Name="No_Client" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="First_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Last_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Username" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Telephone_Number" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="E_mail" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="City_Country" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Demande_Navette_Clt" Relationship="Self.FK__Demande_N__No_Cl__60A75C0F" FromRole="Client" ToRole="Demande_Navette_Clt" />
+        </EntityType>
+        <EntityType Name="Demande_Navette_Clt">
+          <Key>
+            <PropertyRef Name="Id_demande" />
+          </Key>
+          <Property Name="Id_demande" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="No_Client" Type="Int32" Nullable="false" />
+          <Property Name="Num_Car" Type="Int32" Nullable="false" />
+          <Property Name="Ville_Depart" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Ville_Arrivee" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Date_Depart" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Date_Arrivee" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Heur_debut" Type="Time" Nullable="false" Precision="7" />
+          <Property Name="Heur_fin" Type="Time" Nullable="false" Precision="7" />
+          <NavigationProperty Name="Client" Relationship="Self.FK__Demande_N__No_Cl__60A75C0F" FromRole="Demande_Navette_Clt" ToRole="Client" />
+          <NavigationProperty Name="Line_Demande" Relationship="Self.FK__Line_Dema__Id_de__656C112C" FromRole="Demande_Navette_Clt" ToRole="Line_Demande" />
+        </EntityType>
+        <EntityType Name="Line_Demande">
+          <Key>
+            <PropertyRef Name="Id_line_Cmd" />
+          </Key>
+          <Property Name="Id_line_Cmd" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Id_demand_Navette" Type="Int32" Nullable="false" />
+          <Property Name="Nbr_Demande" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Demande_Navette_Clt" Relationship="Self.FK__Line_Dema__Id_de__656C112C" FromRole="Line_Demande" ToRole="Demande_Navette_Clt" />
+        </EntityType>
+        <EntityType Name="Line_Offre">
+          <Key>
+            <PropertyRef Name="Id_Offre" />
+          </Key>
+          <Property Name="Id_Offre" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Id_Navette" Type="Int32" Nullable="false" />
+          <Property Name="Id_Ste" Type="Int32" Nullable="false" />
+          <Property Name="Date_Debut_Offre" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Date_fin_Offre" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Taux_Offre" Type="Double" Nullable="false" />
+          <NavigationProperty Name="Navette" Relationship="Self.FK__Line_Offr__Id_Na__66603565" FromRole="Line_Offre" ToRole="Navette" />
+          <NavigationProperty Name="Societe" Relationship="Self.FK__Line_Offr__Id_St__6754599E" FromRole="Line_Offre" ToRole="Societe" />
+        </EntityType>
+        <EntityType Name="Login">
+          <Key>
+            <PropertyRef Name="Id_User" />
+          </Key>
+          <Property Name="Id_User" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Username" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Navette">
+          <Key>
+            <PropertyRef Name="Id_abonnement" />
+          </Key>
+          <Property Name="Id_abonnement" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="No_Autocar" Type="Int32" Nullable="false" />
+          <Property Name="No_Ste" Type="Int32" Nullable="false" />
+          <Property Name="Date_debut" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Date_fin" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Heur_debut" Type="Time" Nullable="false" Precision="7" />
+          <Property Name="Heur_fin" Type="Time" Nullable="false" Precision="7" />
+          <Property Name="Ville_Depart" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Ville_Arriver" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Nbr_Max_Abonnee" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Line_Offre" Relationship="Self.FK__Line_Offr__Id_Na__66603565" FromRole="Navette" ToRole="Line_Offre" />
+          <NavigationProperty Name="Societe" Relationship="Self.FK__Navette__No_Ste__5DCAEF64" FromRole="Navette" ToRole="Societe" />
+        </EntityType>
+        <EntityType Name="Societe">
+          <Key>
+            <PropertyRef Name="No_Ste" />
+          </Key>
+          <Property Name="No_Ste" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name_STE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Username" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Telephone_Ste" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="E_mail_Ste" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="AutoCar" Relationship="Self.FK__AutoCar__No_Soci__74AE54BC" FromRole="Societe" ToRole="AutoCar" />
+          <NavigationProperty Name="Line_Offre" Relationship="Self.FK__Line_Offr__Id_St__6754599E" FromRole="Societe" ToRole="Line_Offre" />
+          <NavigationProperty Name="Navette" Relationship="Self.FK__Navette__No_Ste__5DCAEF64" FromRole="Societe" ToRole="Navette" />
+        </EntityType>
+        <Association Name="FK__AutoCar__No_Soci__74AE54BC">
+          <End Role="Societe" Type="Self.Societe" Multiplicity="1" />
+          <End Role="AutoCar" Type="Self.AutoCar" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Societe">
+              <PropertyRef Name="No_Ste" />
+            </Principal>
+            <Dependent Role="AutoCar">
+              <PropertyRef Name="No_Societe" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Demande_N__No_Cl__60A75C0F">
+          <End Role="Client" Type="Self.Client" Multiplicity="1" />
+          <End Role="Demande_Navette_Clt" Type="Self.Demande_Navette_Clt" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Client">
+              <PropertyRef Name="No_Client" />
+            </Principal>
+            <Dependent Role="Demande_Navette_Clt">
+              <PropertyRef Name="No_Client" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Line_Dema__Id_de__656C112C">
+          <End Role="Demande_Navette_Clt" Type="Self.Demande_Navette_Clt" Multiplicity="1" />
+          <End Role="Line_Demande" Type="Self.Line_Demande" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Demande_Navette_Clt">
+              <PropertyRef Name="Id_demande" />
+            </Principal>
+            <Dependent Role="Line_Demande">
+              <PropertyRef Name="Id_demand_Navette" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Line_Offr__Id_Na__66603565">
+          <End Role="Navette" Type="Self.Navette" Multiplicity="1" />
+          <End Role="Line_Offre" Type="Self.Line_Offre" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Navette">
+              <PropertyRef Name="Id_abonnement" />
+            </Principal>
+            <Dependent Role="Line_Offre">
+              <PropertyRef Name="Id_Navette" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Line_Offr__Id_St__6754599E">
+          <End Role="Societe" Type="Self.Societe" Multiplicity="1" />
+          <End Role="Line_Offre" Type="Self.Line_Offre" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Societe">
+              <PropertyRef Name="No_Ste" />
+            </Principal>
+            <Dependent Role="Line_Offre">
+              <PropertyRef Name="Id_Ste" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Navette__No_Ste__5DCAEF64">
+          <End Role="Societe" Type="Self.Societe" Multiplicity="1" />
+          <End Role="Navette" Type="Self.Navette" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Societe">
+              <PropertyRef Name="No_Ste" />
+            </Principal>
+            <Dependent Role="Navette">
+              <PropertyRef Name="No_Ste" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="WeALLNEntities2" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="AutoCar" EntityType="Self.AutoCar" />
+          <EntitySet Name="Client" EntityType="Self.Client" />
+          <EntitySet Name="Demande_Navette_Clt" EntityType="Self.Demande_Navette_Clt" />
+          <EntitySet Name="Line_Demande" EntityType="Self.Line_Demande" />
+          <EntitySet Name="Line_Offre" EntityType="Self.Line_Offre" />
+          <EntitySet Name="Login" EntityType="Self.Login" />
+          <EntitySet Name="Navette" EntityType="Self.Navette" />
+          <EntitySet Name="Societe" EntityType="Self.Societe" />
+          <AssociationSet Name="FK__AutoCar__No_Soci__74AE54BC" Association="Self.FK__AutoCar__No_Soci__74AE54BC">
+            <End Role="Societe" EntitySet="Societe" />
+            <End Role="AutoCar" EntitySet="AutoCar" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Demande_N__No_Cl__60A75C0F" Association="Self.FK__Demande_N__No_Cl__60A75C0F">
+            <End Role="Client" EntitySet="Client" />
+            <End Role="Demande_Navette_Clt" EntitySet="Demande_Navette_Clt" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Line_Dema__Id_de__656C112C" Association="Self.FK__Line_Dema__Id_de__656C112C">
+            <End Role="Demande_Navette_Clt" EntitySet="Demande_Navette_Clt" />
+            <End Role="Line_Demande" EntitySet="Line_Demande" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Line_Offr__Id_Na__66603565" Association="Self.FK__Line_Offr__Id_Na__66603565">
+            <End Role="Navette" EntitySet="Navette" />
+            <End Role="Line_Offre" EntitySet="Line_Offre" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Line_Offr__Id_St__6754599E" Association="Self.FK__Line_Offr__Id_St__6754599E">
+            <End Role="Societe" EntitySet="Societe" />
+            <End Role="Line_Offre" EntitySet="Line_Offre" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Navette__No_Ste__5DCAEF64" Association="Self.FK__Navette__No_Ste__5DCAEF64">
+            <End Role="Societe" EntitySet="Societe" />
+            <End Role="Navette" EntitySet="Navette" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="WeALLNModelStoreContainer" CdmEntityContainer="WeALLNEntities2">
+          <EntitySetMapping Name="AutoCar">
+            <EntityTypeMapping TypeName="WeALLNModel.AutoCar">
+              <MappingFragment StoreEntitySet="AutoCar">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="NoCar" ColumnName="NoCar" />
+                <ScalarProperty Name="Marque" ColumnName="Marque" />
+                <ScalarProperty Name="Model" ColumnName="Model" />
+                <ScalarProperty Name="No_Societe" ColumnName="No_Societe" />
+                <ScalarProperty Name="Capacity" ColumnName="Capacity" />
+                <ScalarProperty Name="Cilma" ColumnName="Cilma" />
+                <ScalarProperty Name="Available" ColumnName="Available" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Client">
+            <EntityTypeMapping TypeName="WeALLNModel.Client">
+              <MappingFragment StoreEntitySet="Client">
+                <ScalarProperty Name="No_Client" ColumnName="No_Client" />
+                <ScalarProperty Name="First_Name" ColumnName="First_Name" />
+                <ScalarProperty Name="Last_Name" ColumnName="Last Name" />
+                <ScalarProperty Name="Username" ColumnName="Username" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Telephone_Number" ColumnName="Telephone_Number" />
+                <ScalarProperty Name="E_mail" ColumnName="E_mail" />
+                <ScalarProperty Name="City_Country" ColumnName="City/Country" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Demande_Navette_Clt">
+            <EntityTypeMapping TypeName="WeALLNModel.Demande_Navette_Clt">
+              <MappingFragment StoreEntitySet="Demande_Navette_Clt">
+                <ScalarProperty Name="Id_demande" ColumnName="Id_demande" />
+                <ScalarProperty Name="No_Client" ColumnName="No_Client" />
+                <ScalarProperty Name="Num_Car" ColumnName="Num_Car" />
+                <ScalarProperty Name="Ville_Depart" ColumnName="Ville_Depart" />
+                <ScalarProperty Name="Ville_Arrivee" ColumnName="Ville_Arrivee" />
+                <ScalarProperty Name="Date_Depart" ColumnName="Date_Depart" />
+                <ScalarProperty Name="Date_Arrivee" ColumnName="Date_Arrivee" />
+                <ScalarProperty Name="Heur_debut" ColumnName="Heur_debut" />
+                <ScalarProperty Name="Heur_fin" ColumnName="Heur_fin" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Line_Demande">
+            <EntityTypeMapping TypeName="WeALLNModel.Line_Demande">
+              <MappingFragment StoreEntitySet="Line_Demande">
+                <ScalarProperty Name="Id_line_Cmd" ColumnName="Id_line_Cmd" />
+                <ScalarProperty Name="Id_demand_Navette" ColumnName="Id_demand_Navette" />
+                <ScalarProperty Name="Nbr_Demande" ColumnName="Nbr_Demande" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Line_Offre">
+            <EntityTypeMapping TypeName="WeALLNModel.Line_Offre">
+              <MappingFragment StoreEntitySet="Line_Offre">
+                <ScalarProperty Name="Id_Offre" ColumnName="Id_Offre" />
+                <ScalarProperty Name="Id_Navette" ColumnName="Id_Navette" />
+                <ScalarProperty Name="Id_Ste" ColumnName="Id_Ste" />
+                <ScalarProperty Name="Date_Debut_Offre" ColumnName="Date_Debut_Offre" />
+                <ScalarProperty Name="Date_fin_Offre" ColumnName="Date_fin_Offre" />
+                <ScalarProperty Name="Taux_Offre" ColumnName="Taux_Offre" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Login">
+            <EntityTypeMapping TypeName="WeALLNModel.Login">
+              <MappingFragment StoreEntitySet="Login">
+                <ScalarProperty Name="Id_User" ColumnName="Id_User" />
+                <ScalarProperty Name="Username" ColumnName="Username" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Navette">
+            <EntityTypeMapping TypeName="WeALLNModel.Navette">
+              <MappingFragment StoreEntitySet="Navette">
+                <ScalarProperty Name="Id_abonnement" ColumnName="Id_abonnement" />
+                <ScalarProperty Name="No_Autocar" ColumnName="No_Autocar" />
+                <ScalarProperty Name="No_Ste" ColumnName="No_Ste" />
+                <ScalarProperty Name="Date_debut" ColumnName="Date_debut" />
+                <ScalarProperty Name="Date_fin" ColumnName="Date_fin" />
+                <ScalarProperty Name="Heur_debut" ColumnName="Heur_debut" />
+                <ScalarProperty Name="Heur_fin" ColumnName="Heur_fin" />
+                <ScalarProperty Name="Ville_Depart" ColumnName="Ville_Depart" />
+                <ScalarProperty Name="Ville_Arriver" ColumnName="Ville_Arriver" />
+                <ScalarProperty Name="Nbr_Max_Abonnee" ColumnName="Nbr_Max_Abonnee" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Societe">
+            <EntityTypeMapping TypeName="WeALLNModel.Societe">
+              <MappingFragment StoreEntitySet="Societe">
+                <ScalarProperty Name="No_Ste" ColumnName="No_Ste" />
+                <ScalarProperty Name="Name_STE" ColumnName="Name_STE" />
+                <ScalarProperty Name="Username" ColumnName="Username" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Telephone_Ste" ColumnName="Telephone_Ste" />
+                <ScalarProperty Name="E_mail_Ste" ColumnName="E_mail_Ste" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Aucun" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

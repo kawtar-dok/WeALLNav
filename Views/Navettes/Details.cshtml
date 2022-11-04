@@ -1,0 +1,90 @@
+﻿@model WeALLNav.Models.Navette
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Navette</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.No_Autocar)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.No_Autocar)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Date_debut)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Date_debut)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Date_fin)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Date_fin)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Heur_debut)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Heur_debut)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Heur_fin)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Heur_fin)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Ville_Depart)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Ville_Depart)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Ville_Arriver)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Ville_Arriver)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Nbr_Max_Abonnee)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nbr_Max_Abonnee)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Societe.Name_STE)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Societe.Name_STE)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id_abonnement }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
